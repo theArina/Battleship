@@ -19,6 +19,9 @@ public class Field {
     public int getShips() {
         return ships;
     }
+    public boolean[][] getField() {
+        return field;
+    }
     public void makeField() {
         field = new boolean[fieldSize][];
         for (int i = 0; i < fieldSize; i++) {
