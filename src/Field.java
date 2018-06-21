@@ -5,7 +5,7 @@ public class Field {
     private int fieldSize;
     private int ships;
     private boolean field[][];
-    private short playerField[][];
+    private char playerField[][];
 
     public void setFieldSize(int size) {
         fieldSize = size;
@@ -22,6 +22,9 @@ public class Field {
     public boolean[][] getField() {
         return field;
     }
+    public char[][] getPlayerField() {
+        return playerField;
+    }
     public void makeField() {
         field = new boolean[fieldSize][];
         for (int i = 0; i < fieldSize; i++) {
@@ -29,9 +32,12 @@ public class Field {
         }
     }
     public void makePlayerField() {
-        playerField = new short[fieldSize][];
+        playerField = new char[fieldSize][];
         for (int i = 0; i < fieldSize; i++) {
-            playerField[i] = new short[fieldSize];
+            playerField[i] = new char[fieldSize];
+            for (int j = 0; j < fieldSize; j++) {
+                playerField[i][j] = '-';
+            }
         }
     }
 

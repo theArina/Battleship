@@ -11,7 +11,7 @@ public class Battle {
                 "There are " + ships + " ships of " + shipSize + " units.\n" +
                 "Here is the field without ships.";
         System.out.println(greet + "\n" + rules + "\n");
-//        f.showField("current");
+        f.showField("current");
         System.out.println("\nWe are ready to start.\nType coordinate here:");
     }
     public void battle(Field f, int fieldSize) {
@@ -24,8 +24,12 @@ public class Battle {
 
             if (f.getField()[coordinateC[1] - 48][(int)y]) {
                 System.out.println("Hit!");
+                f.getPlayerField()[coordinateC[1] - 48][(int)y] = '1';
+                f.showField("current");
             } else {
                 System.out.println("Miss:(");
+                f.getPlayerField()[coordinateC[1] - 48][(int)y] = '0';
+                f.showField("current");
             }
         }
     }
