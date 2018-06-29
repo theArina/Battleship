@@ -16,8 +16,8 @@ public class Battleship {
         f.showField("full");
 
         Battle b = new Battle();
-        b.greeting(f, f.getFieldSize(), f.getShips(), s.getShipSize());
-        b.battle(f, f.getFieldSize());
+        b.greeting(f, s.getShipSize());
+        b.battle(f, s);
 
     }
 }

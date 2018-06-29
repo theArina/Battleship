@@ -6,6 +6,9 @@ public class Field {
     private int ships;
     private boolean field[][];
     private char playerField[][];
+    private int coordinatesX[];
+    private int coordinatesY[];
+    private boolean dirs[];
 
     public void setFieldSize(int size) {
         fieldSize = size;
@@ -18,6 +21,12 @@ public class Field {
     }
     public int getShips() {
         return ships;
+    }
+    public int[] coordinatesX() {
+        return coordinatesX;
+    }
+    public int[] coordinatesY() {
+        return coordinatesY;
     }
     public boolean[][] getField() {
         return field;
@@ -42,7 +51,6 @@ public class Field {
     }
 
     public void showField(String fieldType) {
-
         System.out.print("    ");
         for (int p = 0; p < fieldSize; p++) {
             System.out.print((char)(p + 65) + "  ");
@@ -64,8 +72,13 @@ public class Field {
         }
     }
     public void makeShips(Ship s) {
+        coordinatesX = new int[ships];
+        coordinatesY = new int[ships];
+        dirs = new boolean[ships];
         for (int i = 0; i < ships; i++) {
-            s.makeShip(fieldSize, field);
+            dirs[i] = s.makeShip(fieldSize, field);
+            coordinatesX[i] = s.getX();
+            coordinatesY[i] = s.getY();
         }
     }
 }

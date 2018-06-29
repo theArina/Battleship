@@ -12,11 +12,17 @@ public class Ship {
     public int getShipSize() {
         return shipSize;
     }
+    public int getX() {
+        return x;
+    }
+    public int getY() {
+        return y;
+    }
     private void setCoordinates(int boundX, int boundY) {
         x = (new Random().nextInt(boundX));
         y = (new Random().nextInt(boundY));
     }
-    public void makeShip(int fieldSize, boolean field[][]) {
+    public boolean makeShip(int fieldSize, boolean field[][]) {
         boolean dir = (new Random().nextBoolean());
         int boundX = dir ? fieldSize - shipSize : fieldSize;
         int boundY = !dir ? fieldSize - shipSize : fieldSize;
@@ -49,5 +55,6 @@ public class Ship {
                 break;
             }
         }
+        return dir;
     }
 }
