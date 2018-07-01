@@ -22,12 +22,6 @@ public class Field {
     public int getShips() {
         return ships;
     }
-    public int[] coordinatesX() {
-        return coordinatesX;
-    }
-    public int[] coordinatesY() {
-        return coordinatesY;
-    }
     public boolean[][] getField() {
         return field;
     }
@@ -59,11 +53,11 @@ public class Field {
         for (int i = 0; i < fieldSize; i++) {
             System.out.print(i + "   ");
 
-            if (fieldType == "full") {
+            if (fieldType.equals("full")) {
                 for (int j = 0; j < fieldSize; j++) {
                     System.out.print((field[i][j] ? 1 : 0) + "  ");
                 }
-            } else if (fieldType == "current"){
+            } else if (fieldType.equals("current")){
                 for (int j = 0; j < fieldSize; j++) {
                     System.out.print(playerField[i][j] + "  ");
                 }

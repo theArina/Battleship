@@ -30,8 +30,13 @@ public class Ship {
 
         while (true) {
             boolean b = false;
+            if ((x > 0 && field[x - 1][y]) || (y > 0 && field[x][y - 1])) {
+                setCoordinates(boundX, boundY);
+                continue;
+            }
             for (int j = 0, xTemp = x, yTemp = y; j < shipSize; j++) {
-                if (field[xTemp][yTemp]) {
+                if (field[xTemp][yTemp] || (xTemp + 1 < fieldSize && field[xTemp + 1][yTemp]) ||
+                        (yTemp + 1 < fieldSize && field[xTemp][yTemp + 1])) {
                     b = true;
                     break;
                 }

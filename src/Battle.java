@@ -86,5 +86,6 @@ public class Battle {
         for (int i = 0; i < f.getShips();) {
             i+= stroke(f, s) ? 1 : 0;
         }
+        System.out.println("\nTHE GAME IS OVER");
     }
 }
