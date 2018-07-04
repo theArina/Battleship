@@ -35,14 +35,23 @@ public class Ship {
                 continue;
             }
             for (int j = 0, xTemp = x, yTemp = y; j < shipSize; j++) {
-                if (field[xTemp][yTemp] || (xTemp + 1 < fieldSize && field[xTemp + 1][yTemp]) ||
+                if (field[xTemp][yTemp] ||
+                        (xTemp + 1 < fieldSize && field[xTemp + 1][yTemp]) ||
                         (yTemp + 1 < fieldSize && field[xTemp][yTemp + 1])) {
                     b = true;
                     break;
                 }
                 if (dir) {
+                    if (yTemp - 1 > 0 && field[xTemp][yTemp - 1]) {
+                        b = true;
+                        break;
+                    }
                     xTemp++;
                 } else {
+                    if (xTemp - 1 > 0 && field[xTemp - 1][yTemp]) {
+                        b = true;
+                        break;
+                    }
                     yTemp++;
                 }
             }

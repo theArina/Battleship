@@ -13,7 +13,7 @@ public class Battleship {
         f.setShips(3);
         f.makeShips(s);
 
-//        f.showField("full");
+        f.showField("full");
 
         Battle b = new Battle();
         b.greeting(f, s.getShipSize());

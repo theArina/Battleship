@@ -7,7 +7,7 @@ public class Battle {
         String greet = "\nHello and welcome to the Battleship!";
         String rules = "Now you will guess where the ships are. " +
                 "Type a coordinate from A0 to " + (char)(f.getFieldSize() + 64) + (f.getFieldSize() - 1) +
-                ". You can \"miss\" \"hit a ship\" or \"sank a ship\".\n" +
+                ". You can \"miss\" \"hit a ship\" or \"sank/kill a ship\".\n" +
                 "There are " + f.getShips() + " ships of " + shipSize + " units.\n" +
                 "Here is the field without ships.";
         System.out.println(greet + "\n" + rules + "\n");
@@ -52,7 +52,6 @@ public class Battle {
                 }
             }
         }
-
         return k;
     }
     public boolean stroke(Field f, Ship s) {
@@ -66,26 +65,29 @@ public class Battle {
 
         if (coordinate) {
             if (strokeResult(x, y, f.getPlayerField(), s.getShipSize(), f.getFieldSize()) == s.getShipSize()) {
-                System.out.println("Killed!");
+                System.out.println("Killed!\n");
                 f.getPlayerField()[x][y] = '1';
                 f.showField("current");
                 return true;
             } else {
-                System.out.println("Hit!");
+                System.out.println("Hit!\n");
                 f.getPlayerField()[x][y] = '1';
                 f.showField("current");
             }
         } else {
-            System.out.println("Miss:(");
+            System.out.println("Miss:(\n");
             f.getPlayerField()[x][y] = '0';
             f.showField("current");
         }
         return false;
     }
     public void battle(Field f, Ship s) {
-        for (int i = 0; i < f.getShips();) {
-            i+= stroke(f, s) ? 1 : 0;
+        int  numOfHits = 0, killedShips = 0;
+        for (; killedShips < f.getShips();numOfHits++) {
+            killedShips+= stroke(f, s) ? 1 : 0;
         }
         System.out.println("\nTHE GAME IS OVER");
+        System.out.println("You've finished with " + numOfHits +
+                " hits where " + (numOfHits - killedShips * s.getShipSize()) + " is missed");
     }
 }
